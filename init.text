@@ -1,0 +1,15 @@
+use to OpenCV-Python 
+
+
+pip install OpenCV-Python
+
+pip install numpy
+pip install matplotlib
+
+
+check in python 
+$Python
+
+>>> import cv2
+>>> import numpy
+>>> import matplotlib
