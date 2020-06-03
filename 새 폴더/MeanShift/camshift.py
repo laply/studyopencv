@@ -43,7 +43,7 @@ def onMouse(event, x, y, flags, param):
     return 
 
 def camShift():
-    global frame, frame2, inputmode, trackWindow, roi_hist
+    global frame, frame2, inputmode, trackWindow, roi_hist, out
 
     try :
         cap = cv2.VideoCapture("http://172.30.1.7:8891/?action=stream")
@@ -76,6 +76,7 @@ def camShift():
             cv2.polylines(frame, [pts], True, (0, 255, 0), 2)
         
         cv2.imshow('frame', frame)
+
         k = cv2.waitKey(60) & 0xFF
 
         if k == 27:
