@@ -1,15 +1,15 @@
-import numpy as np
 import cv2
 
-cap = cv2.VideoCapture('http://115.20.144.97:11092/?action=stream')
-
+url = 'http://115.20.144.97:11092/?action=stream'
+rtsp = 'rtsp://192.168.0.13:5554/camera'
+cap = cv2.VideoCapture(rtsp)
 
 
 def camera_in():
 
     if not cap.isOpened():
         print("camera open failed")
-        return 
+        return
 
     while True:
         ret, frame = cap.read()
@@ -18,7 +18,7 @@ def camera_in():
             break
 
         inversed = ~frame
-        
+
         cv2.imshow('frame', frame)
         cv2.imshow('inversed', inversed)
 
@@ -31,14 +31,12 @@ def camera_in():
 def camera_in_video_out():
     if not cap.isOpened():
         print("camera open failed")
-        return 
+        return
 
     w = round(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
-
-
-    fourcc = cv2.VideoWriter_fourcc(*'DIVX') # *'DIVX' == 'D', 'I', 'V', 'X'
+    fourcc = cv2.VideoWriter_fourcc(*'DIVX')  # *'DIVX' == 'D', 'I', 'V', 'X'
     delay = round(1000 / fps)
 
     outputVideo = cv2.VideoWriter('output.avi', fourcc, fps, (w, h))
@@ -52,7 +50,7 @@ def camera_in_video_out():
         inversed = ~frame
 
         outputVideo.write(inversed)
-        
+
         cv2.imshow('frame', frame)
         cv2.imshow('inversed', inversed)
 
@@ -60,7 +58,6 @@ def camera_in_video_out():
             break
 
     cv2.destroyAllWindows()
-
 
 
 if __name__ == '__main__':
