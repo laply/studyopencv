@@ -1,0 +1,34 @@
+[openCV ML class]
+
+cv::Algorithm
+^
+cv::ml::StatModle
+[+ train(), + predict()]
+^
+|- cv::ml::ANN_MLP
+|- cv::ml::DTrees [decision Trees]
+|   ^
+|   |- cv::ml::Boost [Boosting Algorithm] - 다수의 약한 분류기에 적절한 가중치 
+|   |- cv::ml::RTrees [Random Trees // Random Forest]
+|
+|- cv::ml::EM [Expectation Maximization] - 기댓값 최대화 (가우시안 혼합모델을 이용한 군집화 알고리즘)
+|- cv::ml::kNearest [k-Nearest Neighber] - k 최근접 이웃 알고리즘 
+|- cv::ml::LogisticRegression
+|- cv::ml::NormalBayesClassifier - 정규 베이즈 분류기
+|- cv::ml::SVM - support vector Machine - 두 class의 데이터를 분리하는 초평면을 구함
+|- cv::ml::SVMSDG -support vector Machine stochastic gradient descent - 대용량 빠른학습
+
+
+[train()]
+virtual bool StatModle::train(InputArray samples, int layout, InputArray Responses);
+samples     =   훈련 데이터 행렬
+layout      =   훈련 데이터 배치 방법 (ROW_SAMPLE, COL_SAMPLE)
+Responses   =   각 훈련 데이터에 대응되는 응답(레이블) 행렬
+return      =   정상 학습완료시 true 반환
+
+[predict()]
+virtual float StatModle::predict(InputArray samples, OutputArray result = noArray(), int flag  = 0) const;
+samples     =   입력 백터가 행단위로 저장된 행렬 CV_32F
+result      =   예측 결과가 저장된 행렬
+flag        =   추가적인 플래그 상수 
+return      =   입력 백터가 하나인경우에 대한 응답 반환
