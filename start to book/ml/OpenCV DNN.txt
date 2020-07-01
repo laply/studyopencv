@@ -1,0 +1,22 @@
+openCV dnn module
+
+이는 만들어진 네트워크에서 순방향 실행을 위한 용도로 설계됨
+
+학습은 caffe, tensorflow 등 다른 딥러닝 프레임 워크에서 진행 
+학습된 모델을 불러와서 실행할때에는 dnn 모듈을 사용
+
+지원 프레임 워크
+Caffe, Tensorflow, Touch, DarkNet, DLDT, ONNX
+
+영상인식 
+AlexNet, GoogleNet, VGG, ResNet SqueezeNet, DenseNet, ShuffleNet, moblieNet, DarkNet 
+
+객체 검출 
+VGG-SSD, MoblieNet-SSD, Faster-RCNN, R-FCN, openCV face detector, Mask-RCNN, EAST, Yolov2, tiny Yolo, Yolov3 모델 
+
+사람 포즈 
+openPose
+흑백 영상 색 추가
+Colorization
+사람 얼굴인식 
+OpenFace
